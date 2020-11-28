@@ -2,7 +2,7 @@ __Description des projets__
 
 __*demospringinjection et demospringinjectionmaven*__ sont des programmes qui nous permettent de comprendre les fonctionnalités de spring, comment mettre en oeuvre l'injection de dépendances avec spring.
 
-__*demoinjection-spectable*__ est une succession de question réponse pour comprendre l'écriture des beans avec spring.
+__*demoinjection-spectable*__ est une succession de question réponse pour comprendre le paramétrage et la configuration des beans avec spring.
 
 __*demoaop et tutoriel-spring-n5-programmation-orientee-aspect*__ sont des programmes qui nous permettent de comprendre la Programmation Orientée Aspect, ses fonctionnalités, sa mise en oeuvre et les notions de Joinpoint, jointcut, advice, aspect, greffon.
 

@@ -46,8 +46,8 @@ Pour l'installation merci de suivre les étapes suivantes:
 __Version du JDK__
 
 Java version "1.8.0_73"
-Java(TM) SE Runtime Environnement (build 1.8.0_73_b02)
-Java HotSpot(TM) 64-Bit Server VM (build 25.73-b02, mixed mode)
+  Java(TM) SE Runtime Environnement (build 1.8.0_73_b02)
+  Java HotSpot(TM) 64-Bit Server VM (build 25.73-b02, mixed mode)
 
 __Exécution de l'application__
 

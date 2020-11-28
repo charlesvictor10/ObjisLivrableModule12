@@ -1,0 +1,50 @@
+Rappelez ce qu’est le phénomène de Dispersion.
+
+La dispersion de code est une autre limite de la POO. L'un des exemples les plus courament utilisé pour
+introduire ce phénomène est la gestion des traces. Effectivement, si vous voulez afficher quelque chose
+à chaque appel de méthode, ou d'instanciation d'objet, vous serez obligés d'ajouter une ligne de code 
+avant chaqu'un de ces points du programme. Il y a donc recopie fréquente de codes dans l'ensemble du
+programme pour ajouter la fonctionnalitée de gestion de traces.
+La programmation Orientée Aspect est là encore capable de résoudre ce problème, en ajoutant un aspect
+qui capture les appels de méthodes dont le code advice serait l'affichage de la trace. Ceci est de plus
+très pratique, car facilement et rapidement implémentable sur un programme déjà important, mais aussi
+facilement supprimable.
+
+Qu’est ce que la Programmation Orientée Aspect?
+
+La programmation Orienetée Aspect est un paradigme de programmation qui permet de traiter séparément:
+  => Les préoccupations transversales, qui relèvent souvent des aspects technique(Journalisation, Sécurité,
+  Transaction, ...).
+  => De préoccupations métiers, qui constituent le coeur d'une application/
+Permet de séparer le code métier du code technique.
+
+En quoi la POA est-elle complémentaire à la POO (Programmation Orienté Objet)?
+
+La programmation object montre ses limites dans certains cas. Prenons, par exemple, un programme gérant
+des commandes clientes d'objets. Si nous souhaitons supprimer un client de notre application, nous 
+devons vérifier si une commande n'est pas en cours pour celui-ci. Il y a donc une contrainte d'intégration
+des données. Dans notre problème, et avec la logique POO, ni l'objet commande, ni l'objet client ne 
+peut effectuer cette opération car ce n'est pas de leur responsabilité. Il ne serait logique de demander
+à une commande de supprimer un client ni à un client de vérifier qu'une commande est en cours.
+C'est une des problèmatiques que l'AOP est capable de résoudre. Dans le cas précédement cité, nous mettrons
+en place la fonctionnalité de vérification d'intégrité des données avec l'aide d'un aspect.
+
+Quel support de la POA propose Spring? Quelle différence avec le support POA d’AspectJ? 
+
+  => Spring AOP: solution maison de spring
+  => AspectJ solution opens source
+
+Qu’est ce qu’un point de jonction? Une coupe? Un greffon? Un Aspect?
+
+  => Un point de jonction est un point du programme autour duquel un ou des aspects ont été greffés
+  => Une coupe designe un ensemble de point de jonctions
+  => Un greffon est un bout de code qui sera exécuté à un certain niveau du programme
+  => Un aspect module définissant des greffons et leur point d'activation	
+
+Comment configurer un aspect dans Spring?
+
+Qu’est ce qu’un tisseur d’aspect?
+
+
+
+  

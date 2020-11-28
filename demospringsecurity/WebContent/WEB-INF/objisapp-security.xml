@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  					http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+              		http://www.springframework.org/schema/security 
+              		http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
+
+    <!--  Déclaration du PropertyPlaceholderConfigurer -->
+    
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/db.properties</value>
+			</list>
+		</property>
+	</bean>
+<!--  Déclaration de la DATASOURCE -->
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>
+
+
+	<!-- Stratégie de Sécurité : ressources et Remember me -->
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/login.jsp*" filters="none"/>  
+		<security:intercept-url pattern="/logo*" filters="none"/>  
+		<security:intercept-url pattern="/objis.css" filters="none"/>  
+		<security:intercept-url pattern="/**" access="ROLE_PARTICIPANT,ROLE_FORMATEUR,ROLE_MAINTENANCE,ROLE_COMMERCIAL"/>
+	  	<security:form-login login-page='/login.jsp'/>	
+	</security:http>
+
+<!-- Authentification via Database personalisée : Exemple avec tables 'employes' et 'roles' 
+Attention à la colonne 'enabled' à ajouter
+-->
+<security:authentication-provider user-service-ref='myUserDetailsService' />
+	
+<bean id="myUserDetailsService" class="org.springframework.security.userdetails.jdbc.JdbcDaoImpl">
+  <property name="dataSource" ref="dataSource"/>
+  <property name="usersByUsernameQuery" value="SELECT login as username, password, enabled , nom, prenom
+                                                 FROM utilisateurs WHERE login = ?"/>
+  <property name="authoritiesByUsernameQuery" value="SELECT login as username, role 
+                                                       FROM roles WHERE login = ?"/>
+</bean>  
+
+ 
+</beans>
